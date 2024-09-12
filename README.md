@@ -49,7 +49,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+[![Product Name Screen Shot][product-screenshot]
 
 This project is a simple Chess AI where the player competes against the computer. The AI uses the minimax algorithm with alpha-beta pruning to efficiently calculate its next moves. Players follow the standard rules of chess as they challenge the AI's strategic gameplay.
 
@@ -96,12 +96,12 @@ To get things running locally. follow these simple steps.
 
 Click on the "Start Game" button to begin.
 
-![Alt text](https://github.com/Anonymous893/ChessAI/blob/main/Images/chessIntro.gif)
+![Alt text](https://github.com/Anonymous893/ChessAI/blob/main/mages/chessIntro.gif)
 
 Then, play the game with the AI based on the rules of standard chess. A short demo
 is shown below.
 
-![Alt text](https://github.com/Anonymous893/Chess/blob/main/Images/chessPlay.gif)
+![Alt text](https://github.com/Anonymous893/Chess/blob/main/images/chessPlay.gif)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
