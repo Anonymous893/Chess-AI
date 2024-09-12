@@ -59,7 +59,7 @@ This project is a simple Chess AI where the player competes against the computer
 
 * [![JS][JavaScript]][JS-url]
 * [![HTML][HTML5]][HTML-url]
-* [![CSS][CSS5]][CSS-url]
+* [![CSS][CSS3]][CSS-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -136,5 +136,5 @@ is shown below.
 [JS-url]: https://www.javascript.com/
 [HTML5]: https://img.shields.io/badge/HTML-957DAD?style=for-the-badge&logo=html5&logoColor=white
 [HTML-url]: https://html.com/
-[CSS5]: https://img.shields.io/badge/CSS-A2BFFE?&style=for-the-badge&logo=css3&logoColor=white
+[CSS3]: https://img.shields.io/badge/CSS-A2BFFE?&style=for-the-badge&logo=css3&logoColor=white
 [CSS-url]: https://developer.mozilla.org/en-US/docs/Web/CSS
