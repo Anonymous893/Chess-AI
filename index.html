@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Welcome</title>
+        <link rel="stylesheet" href="homeStyle.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <div class="overlay"></div>
+        <div class="welcome-container">
+            <h1 class="libre-baskerville-regular">Welcome to CHESS AI</h1>
+            <button id="start-button">Start Game</button>
+        </div>
+        <script>
+            document.getElementById('start-button').addEventListener('click', function() {
+                window.location.href = 'game.html'; // Redirect to game page
+            });
+        </script>
+    </body>
+</html>
