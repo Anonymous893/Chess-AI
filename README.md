@@ -96,12 +96,14 @@ To get things running locally. follow these simple steps.
 
 Click on the "Start Game" button to begin.
 
-![Alt text](https://github.com/Anonymous893/ChessAI/blob/main/mages/chessIntro.gif)
+![Alt text](https://github.com/Anonymous893/ChessAI/blob/master/images/chessIntro.gif)
 
 Then, play the game with the AI based on the rules of standard chess. A short demo
 is shown below.
 
-![Alt text](https://github.com/Anonymous893/Chess/blob/main/images/chessPlay.gif)
+![Alt text](https://github.com/Anonymous893/ChessAI/blob/master/images/chessPlay.gif)
+
+*Disclaimer: The demo gifs have a strange texture when they were converted from a screen recording to a gif. I'm not sure how to fix it.*
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
