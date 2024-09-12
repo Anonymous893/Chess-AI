@@ -103,8 +103,6 @@ is shown below.
 
 ![Alt text](https://github.com/Anonymous893/ChessAI/blob/master/images/chessPlay.gif)
 
-*Disclaimer: The demo gifs have a strange texture when they were converted from a screen recording to a gif. I'm not sure how to fix it.*
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
