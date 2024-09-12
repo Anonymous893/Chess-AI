@@ -1,6 +1,7 @@
 .board {
     width: 400px;
     margin-top: 7.5rem;
+    margin: auto;
 }
 
 .info {
@@ -35,4 +36,8 @@ body {
     box-sizing: border-box;
     margin: 0;
 }
-  
+
+.header-link {
+    color: white; 
+    text-decoration: none;
+}
