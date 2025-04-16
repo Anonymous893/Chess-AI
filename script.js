@@ -1,72 +1,55 @@
 var board, game = new Chess();
 
 //Decides the best move to play using the list of moves from minimax
-var moveToPlay =function(depth, game, isMaximisingPlayer) {
-
+var moveToPlay = function(depth, game, isMaximisingPlayer) {
     //Generate all possible moves and initialise best move
-    var newGameMoves = game.ugly_moves();
-    var bestMove = -9999;
-    var bestMoveFound;
+    const moves = game.ugly_moves();
+    let bestValue = isMaximisingPlayer ? -Infinity : Infinity;
+    let bestMove = null;
 
-    for(var i = 0; i < newGameMoves.length; i++) {
-        var newGameMove = newGameMoves[i]
-        game.ugly_move(newGameMove);
-        var value = minimax(depth - 1, game, -10000, 10000, !isMaximisingPlayer);
-        game.undo();
-        if(value >= bestMove) {
-            bestMove = value;
-            bestMoveFound = newGameMove;
+    for (const move of moves) {
+        const tempGame = new Chess(game.fen());
+        tempGame.ugly_move(move);
+        const value = minimax(depth - 1, tempGame, -Infinity, Infinity, !isMaximisingPlayer);
+
+        if ((isMaximisingPlayer && value > bestValue) || 
+            (!isMaximisingPlayer && value < bestValue)) {
+            bestValue = value;
+            bestMove = move;
         }
     }
-    return bestMoveFound;
+    return bestMove;
 };
 
 //Minimax algorithm with alpha-beta pruning
 const minimax = (depth, game, alpha, beta, isMaximisingPlayer) => {
     positionCount++;
-
-    //Base case: Evaluate the board at the maximum search depth
     if (depth === 0) {
-        return evaluateBoard(game.board());
+        return evaluateBoard(game.board()) * (isMaximisingPlayer ? 1 : -1);
     }
 
-    const newGameMoves = game.ugly_moves();
+    const moves = game.ugly_moves();
+    let bestValue = isMaximisingPlayer ? -Infinity : Infinity;
 
-    //Recursive helper function
-    const minimaxHelper = (isMaximisingPlayer, bestMoveInit, compareFunc, alphaFunc, betaFunc) => {
-        let bestMove = bestMoveInit;
+    for (const move of moves) {
+        //Use temporary game state for each move
+        const tempGame = new Chess(game.fen());
+        tempGame.ugly_move(move);
+        
+        const value = minimax(depth - 1, tempGame, alpha, beta, !isMaximisingPlayer);
 
-        //Loop through all possible moves
-        for (const move of newGameMoves) {
-            game.ugly_move(move);
-            const value = minimax(depth - 1, game, alpha, beta, !isMaximisingPlayer);
-            game.undo();
-
-            bestMove = compareFunc(bestMove, value);
-
-            //Update alpha or beta value based on the current player's turn
-            if (isMaximisingPlayer) {
-                alpha = alphaFunc(alpha, bestMove);
-            } else {
-                beta = betaFunc(beta, bestMove);
-            }
-
-            //Alpha-beta pruning: If the current branch can no longer improve the outcome, 
-            //stop further evaluation
-            if (beta <= alpha) break;
+        if (isMaximisingPlayer) {
+            bestValue = Math.max(bestValue, value);
+            alpha = Math.max(alpha, bestValue);
+        } else {
+            bestValue = Math.min(bestValue, value);
+            beta = Math.min(beta, bestValue);
         }
 
-        return bestMove;
-    };
+        if (beta <= alpha) break;
+    }
 
-    // Maximising player's turn
-    if (isMaximisingPlayer) {
-        return minimaxHelper(true, -Infinity, Math.max, Math.max, Math.min);
-    }
-    // Minimising player's turn
-    else {
-        return minimaxHelper(false, Infinity, Math.min, Math.min, Math.max);
-    }
+    return bestValue;
 };
 
 var evaluateBoard = function (board) {
@@ -200,11 +183,11 @@ var getPieceValue = function (piece, x, y) {
 };
 
 /* Board Visualisation and Game State Handling */
-var onDragStart = function (piece) {
-    if (game.in_checkmate() === true || game.in_draw() === true ||
-        piece.search(/^b/) !== -1) {
+var onDragStart = function (source, piece, position, orientation) {
+    if (game.in_checkmate() || game.in_draw() || piece.startsWith('b')) {
         return false;
     }
+    return true;
 };
 
 var makeBestMove = function () {
@@ -226,9 +209,13 @@ var getBestMove = function (game) {
 
     positionCount = 0;
     var depth = parseInt($('#search-depth').find(':selected').text());
+    var isMaximisingPlayer = game.turn() == 'w';
+
+    // Create isolated game clone for AI search
+    const searchGame = new Chess(game.fen());
 
     var d = new Date().getTime();
-    var bestMove = moveToPlay(depth, game, true);
+    var bestMove = moveToPlay(depth, searchGame, isMaximisingPlayer);
     var d2 = new Date().getTime();
     var moveTime = (d2 - d);
     var positionsPerS = ( positionCount * 1000 / moveTime);
