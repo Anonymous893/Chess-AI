@@ -107,16 +107,6 @@ is shown below.
 
 
 
-<!-- ROADMAP -->
-## Roadmap
-
-- [ ] Fix minor bug
-    - [ ] Rarely, a piece is not allowed to be moved into a valid position.
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
